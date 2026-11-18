@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClipGenius AI</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#10111b;color:white;font-family:Arial,sans-serif}
+header{padding:22px;background:#191a2a;border-bottom:1px solid #34344b}
+h1{margin:0;color:#b99aff}
+main{max-width:850px;margin:auto;padding:20px}
+.panel{background:#1c1d2e;padding:20px;border-radius:15px;margin:16px 0}
+button{background:#8055e9;color:white;border:0;border-radius:9px;padding:13px 18px;font-weight:bold}
+input{max-width:100%;padding:13px;border-radius:8px;border:1px solid #555;background:#292a3b;color:white}
+label{display:block;margin:14px 0}
+.muted{color:#b8b8ca;font-size:14px}
+</style>
+</head>
+<body>
+<header>
+<h1>✂ ClipGenius AI</h1>
+<p>Personal AI Video Clipping Studio</p>
+</header>
+<main>
+<div class="panel">
+<h2>Upload your video</h2>
+<p class="muted">Select a video from your Android phone.</p>
+<input type="file" id="video" accept="video/*">
+</div>
+<div class="panel">
+<h2>Video settings</h2>
+<label>Clip duration
+<select id="duration">
+<option value="20">20 seconds</option>
+<option value="30" selected>30 seconds</option>
+<option value="45">45 seconds</option>
+<option value="60">60 seconds</option>
+</select>
+</label>
+<label>Video format
+<select id="format">
+<option value="9:16">Vertical 9:16 Shorts</option>
+<option value="16:9">Landscape 16:9</option>
+</select>
+</label>
+<button onclick="prepare()">Prepare video</button>
+<p id="status" class="muted">No video selected yet.</p>
+</div>
+<div class="panel">
+<h2>My clipping workspace</h2>
+<p class="muted">Your video processing workspace will be added next.</p>
+</div>
+</main>
+<script>
+function prepare(){
+const file=document.getElementById('video').files[0];
+const status=document.getElementById('status');
+if(!file){status.textContent='Please select a video first.';return;}
+status.textContent='Selected: '+file.name+' ('+(file.size/1048576).toFixed(1)+' MB). Ready for the next development step.';
+}
+</script>
+</body>
+</html>
